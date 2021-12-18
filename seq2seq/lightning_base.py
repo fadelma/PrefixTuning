@@ -145,7 +145,13 @@ class PrefixTransformer(pl.LightningModule):
 
         self.seq2seq_model_type = MODEL_MODES[mode]
         if seq2seq_model is None:
-            self.seq2seq_model = BartForConditionalGeneration.from_pretrained(
+#             self.seq2seq_model = BartForConditionalGeneration.from_pretrained(
+#                 self.hparams.model_name_or_path,
+#                 from_tf=bool(".ckpt" in self.hparams.model_name_or_path),
+#                 config=self.config,
+#                 cache_dir=cache_dir,
+#             )
+            self.seq2seq_model = self.seq2seq_model_type.from_pretrained(
                 self.hparams.model_name_or_path,
                 from_tf=bool(".ckpt" in self.hparams.model_name_or_path),
                 config=self.config,
