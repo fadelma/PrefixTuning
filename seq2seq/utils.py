@@ -224,9 +224,9 @@ class Seq2SeqDataset(AbstractSeq2SeqDataset):
         """Call prepare_seq2seq_batch."""
         batch_encoding: Dict[str, torch.Tensor] = self.tokenizer.prepare_seq2seq_batch(
             [x["src_texts"] for x in batch],
-            # src_lang=self.src_lang,
+            src_lang=self.src_lang,
             tgt_texts=[x["tgt_texts"] for x in batch],
-            # tgt_lang=self.tgt_lang,
+            tgt_lang=self.tgt_lang,
             max_length=self.max_source_length,
             max_target_length=self.max_target_length,
             return_tensors="pt",
